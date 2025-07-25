@@ -4,28 +4,31 @@
 </head>
 <body>
     <form>
-        <fieldset>
-            <legend>Profile Picture</legend>
         <table>
             <tr>
                 <td>
-                    User ID <input type="text" id="uid" name="id">
+                    <fieldset>
+                        <legend>Profile Picture</legend>
+                        <table>
+                            <tr>
+                                <td>User ID</td>
+                                <td><input type="text" id="uid" name="id"></td>
+                            </tr>
+                            <tr>
+                                <td>Picture</td>
+                                <td><input type="file" id="picture" name="picture" accept="image/png, image/jpeg"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><hr></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><input type="submit"></td>
+                            </tr>
+                        </table>
+                    </fieldset>
                 </td>
             </tr>
-            <tr>
-                <td>
-                    Picture <input type="file" id="picture" name="picture" accept="image/png , image/jpeg" /><hr>
-                </td>
-            </tr>
-            
-            <tr>
-                <td>
-                    <input type="submit"
-                </td>
-            </tr>
-        </table>    
-        </fieldset>
-        
-        
+        </table>
     </form>
 </body>
+</html>
