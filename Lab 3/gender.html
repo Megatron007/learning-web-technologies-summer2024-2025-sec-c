@@ -3,16 +3,16 @@
     <title>Gender</title>
 </head>
     <body>
-        <form action="dob.html">
+        <form action="dob.html" onsubmit="return genderChecker()">
             <table>
                 <tr><td>
           <fieldset>
             <legend>Gender</legend>
-            <input type="radio" id="male" for="gender">
+            <input type="radio" id="male" name="gender">
             <label for="male">Male</label>
-            <input type="radio" id="female" for="gender">
+            <input type="radio" id="female" name="gender">
             <label for="female">Female</label>
-            <input type="radio" id="other" for="gender">
+            <input type="radio" id="other" name="gender">
             <label for="other">Other</label><br><br>
           </fieldset>
           </tr></td>
@@ -21,5 +21,18 @@
            </td></tr>
             </table>           
         </form>
+        <script>
+            let option = document.getElementsByName('gender');
+            function genderChecker(){
+            if (!(option[0].checked || option[1].checked || option[2].checked)) {
+            alert("Please Select Your Gender");
+            return false;
+            }
+            else {
+                alert('submitted');
+                return true;
+            }
+        }
+        </script>
     </body>
 </html>

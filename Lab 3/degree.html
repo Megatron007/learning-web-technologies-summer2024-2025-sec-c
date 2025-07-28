@@ -3,16 +3,16 @@
     <title>Degree</title>
 </head>
 <body>
-    <form action="blood.html">
+    <form action="blood.html" onsubmit="return degreeChecker()">
         <table>
             <tr><td>
             <fieldset>
                 <legend>Degree</legend>
-                <input type="checkbox" id="ssc" name="ssc">
+                <input type="checkbox" id="ssc" name="degree">
                 <label for="ssc">SSC</label>
-                <input type="checkbox" id="hsc" name="hsc">
+                <input type="checkbox" id="hsc" name="degree">
                 <label for="hsc">HSC</label>
-                <input type="checkbox" id="bsc" name="bsc">
+                <input type="checkbox" id="bsc" name="degree">
                 <label for="bsc">BSC</label>
             </fieldset>
             </td></tr>
@@ -24,4 +24,18 @@
         </table>
 
     </form>
+        <script>
+            let option = document.getElementsByName('degree');
+            function degreeChecker(){
+            if (!(option[0].checked || option[1].checked || option[2].checked)) {
+            alert("Select at least one option");
+            return false;
+            }
+            else {
+                alert('submitted');
+                return true;
+            }
+        }
+        </script>
+
 </body>
