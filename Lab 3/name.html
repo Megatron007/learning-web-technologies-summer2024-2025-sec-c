@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<head>
+    <title>Name</title>
+</head>
+    <body>
+        <form action="email.html" onsubmit="return unameValidation()">
+            <table>
+                <tr><td><label for="name">Name</label></td></tr>
+                <tr> <td><input type="text" id="name" name="name" onblur="checkUsername()">
+                <p id="uError"></p>
+                </td></tr>
+                <tr><td><input type="submit"></td></tr>
+            </table>
+                      
+        </form>
+        <script>
+            let username = "";
+            function checkUsername()
+            {
+                username = document.getElementById('name').value;
+                const firstWord = username.split("");
+                if(username == ""){
+                    uError.innerHTML = "please name first!"
+                    uError.style.color = 'red';     
+                }
+
+                 else if(!isNaN(firstWord[0]))
+                {
+                    uError.innerHTML = "Name cannot start with a number!"
+                     uError.style.color = 'red';
+                }
+                
+                else if(username.length<2) 
+                {
+                     uError.innerHTML = "name must contain at least 2 letter!"
+                     uError.style.color = 'red';
+                }
+               
+                else{
+                    uError.innerHTML = "";
+                    return true;
+                }
+            }
+
+            function unameValidation()
+            {
+                if(checkUsername())
+            {
+                alert("Valid name");
+                return true;
+            }
+            else{
+                alert("Invalid name, try again");
+                return false;
+            }
+            }
+            
+        </script>
+    </body>
+</html>
