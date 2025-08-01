@@ -3,17 +3,68 @@
     <title>Date of Birth</title>
 </head>
     <body>
-        <form action="degree.html">
-            <table>
-                <tr><td>
-          <fieldset>
+        <form method="post" action="degree.html" onsubmit="return validateDOB()">
+            <fieldset>
             <legend><b>Date of Birth</b></legend>
-            <input type="date"><hr>
-            <input type="submit">
-          </fieldset>
-          </td></tr>
+            <table>
+                <tr>
+                    <td>DD</td>
+                    <td>MM</td>
+                    <td>YY</td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="day" name="day" size="4"> / </td>
+                    <td><input type="text" id="month" name="month" size="4"> / </td>
+                    <td><input type="text" id="year" name="year" size="4"></td>
+                </tr>
+                <tr>
+                   <td>
+                        <input type="submit" value="Submit">
+                    </td>
+                </tr>
+                <tr><td colspan="3"><p id="dobError"></p></td></tr>
             </table>
+        </fieldset>
                       
         </form>
+
+        <script>
+            function validateDOB()
+            {
+                let day = document.getElementById('day');
+                let month = document.getElementById('month');
+                let year = document.getElementById('year');
+
+                let dobError = document.getElementById('dobError');
+                
+
+                if(day.value ===''||month.value ===''|| year.value ==='')
+            {
+                dobError.innerHTML = "Please fill all the field!";
+                dobError.style.color = 'red';
+                return false;
+            }
+            else if(isNaN(day.value) ||isNaN(month.value) ||isNaN(year.value)){
+
+                    dobError.innerHTML = "Please enter only numbers!";
+                    dobError.style.color='red';
+                    return false;
+                }
+            
+
+            else if(day.value < 1 ||  day.value>31 || month.value<1||month.value>12||year.value<1900||year.value>2016 ){
+                
+            
+                    dobError.innerHTML="Please maintain the date format  (dd: 0-31, mm: 1-12, yyyy: 1900-2016) ";
+                    dobError.style.color='red';
+                    return false;
+
+            }
+           
+                dobError.innerHTML='';
+                return true;
+            
+        }
+        </script>
     </body>
 </html>

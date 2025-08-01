@@ -3,13 +3,34 @@
     <title>Email</title>
 </head>
     <body>
-        <form action="gender.html">
+        <form method="post" action="gender.html" onsubmit="return checkEmail()">
             <table>
                 <tr><td><label for="email">Email</label></td></tr>
                 <tr> <td><input type="email" id="email" name="email"></td></tr>
                 <tr><td><input type="submit"></td></tr>
+                <tr><td><p id="emailerror"></p> </td></tr>
             </table>
                       
         </form>
+        <script>
+    
+            function checkEmail()
+            
+            {
+                let emailval = document.getElementById("email");
+                let emailerror = document.getElementById("emailerror");
+                if(emailval.value ==="")
+            {
+                emailerror.innerHTML = "Email cannot be empty!";
+                emailerror.style.color = 'red';
+                return false;
+                
+            }
+            else{
+                emailerror.innerHTML="";
+                return true;
+            }
+            }
+        </script>
     </body>
 </html>
