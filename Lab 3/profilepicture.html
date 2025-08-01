@@ -3,7 +3,7 @@
     <title>Profile Picture</title>
 </head>
 <body>
-    <form>
+    <form method="post" enctype="multipart/form-data" onsubmit="return validatePPform()" >
         <table>
             <tr>
                 <td>
@@ -12,11 +12,13 @@
                         <table>
                             <tr>
                                 <td>User ID</td>
-                                <td><input type="text" id="uid" name="id"></td>
+                                <td><input type="text" id="uid" name="id" onblur="idCheck()"></td>
+                                <td><p id="uidError"></p></td>
                             </tr>
                             <tr>
                                 <td>Picture</td>
                                 <td><input type="file" id="picture" name="picture" accept="image/png, image/jpeg"></td>
+                                <td><p id="picError"></p></td>
                             </tr>
                             <tr>
                                 <td colspan="2"><hr></td>
@@ -30,5 +32,50 @@
             </tr>
         </table>
     </form>
+    <script>
+        function idCheck()
+        {
+            let userid = document.getElementById('uid');
+            let uidError = document.getElementById('uidError');
+
+            if(userid.value==="" || isNaN(userid.value) || userid.value<0)
+        {
+            uidError.innerHTML="Please enter your userID (it has to be valid number)!";
+            uidError.style.color='red';
+            return false;
+        }   
+            uidError.innerHTML="";
+            return true;
+        }
+
+        function picCheck()
+        {
+            let imgData=document.getElementById('picture');
+            let picError=document.getElementById('picError');
+            if(imgData.value==="")
+        {
+            picError.innerHTML="Please upload a picture!";
+            picError.style.color='red';
+            return false
+        }
+        picError.innerHTML="";
+        return true;
+        }
+
+        function validatePPform()
+        {
+            if(!idCheck())
+        {
+            alert("Wrong input");
+            return false;
+        }
+        if(!picCheck()){
+            alert("You must upload a picture");
+            return false;
+        }
+        alert("Succesful submission");
+        return true;
+        }
+    </script>
 </body>
 </html>
