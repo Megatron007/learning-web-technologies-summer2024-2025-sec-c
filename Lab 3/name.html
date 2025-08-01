@@ -15,31 +15,54 @@
         </form>
         <script>
             let username = "";
+            
             function checkUsername()
             {
                 username = document.getElementById('name').value;
-                const firstWord = username.split("");
-                if(username == ""){
-                    uError.innerHTML = "please name first!"
-                    uError.style.color = 'red';     
+                
+                if(username === ""){
+                    uError.innerHTML = "please enter your name first!"
+                    uError.style.color = 'red'; 
+                    return false;    
                 }
 
-                 else if(!isNaN(firstWord[0]))
-                {
-                    uError.innerHTML = "Name cannot start with a number!"
-                     uError.style.color = 'red';
-                }
+            let firstCode = username.charCodeAt(0);
+            let firstIsUpper = (firstCode >= 65 && firstCode <= 90);
+            let firstIsLower = (firstCode >= 97 && firstCode <= 122);
+
+                 if (!(firstIsUpper || firstIsLower)) {
+                    uError.innerHTML = "Name must start with a letter!";
+                    uError.style.color = 'red';
+                    return false;
+            }
                 
-                else if(username.length<2) 
+                 if(username.length<2) 
                 {
                      uError.innerHTML = "name must contain at least 2 letter!"
                      uError.style.color = 'red';
+                     return false;
                 }
+
+                for (let i = 0; i < username.length; i++) {
+
+                    let code = username.charCodeAt(i);
+
+                    let isUpperCase = (code >= 65 && code <= 90);
+                    let isLowerCase = (code >= 97 && code <= 122);
+                    let isDot = (code === 46);
+                    let isDash = (code === 45);
+
+                if (!(isUpperCase || isLowerCase || isDot || isDash)) {
+                    uError.innerHTML = "Name can contain only letters, dot (.), or dash (-)!";
+                    uError.style.color = 'red';
+                    return false;
+                }
+            }
                
-                else{
+                
                     uError.innerHTML = "";
                     return true;
-                }
+                
             }
 
             function unameValidation()
