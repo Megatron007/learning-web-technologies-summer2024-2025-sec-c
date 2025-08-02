@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title>Calculator</title>
+    <style>
+        button{
+            background-color: green;
+            color:white;
+            width: 60px;
+            height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <div id="calculator" style="background-color:gray">
+       <h1>Calculator</h1> 
+       <input type ="button" style="margin-left:400px" value="Open Calculator" onclick="applyChanges()"><br>
+    </div>
+    <script>
+        function applyChanges() {
+
+
+        const display = document.createElement("div");
+            display.id = "display";
+            display.style.backgroundColor = "white";
+            display.style.height="60px";
+            display.style.width="240px";
+            display.style.border = "1px solid black";
+            display.innerHTML = "";
+
+            document.getElementById('calculator').appendChild(display);
+
+        const btn7=document.createElement("button");
+        const btn7Text=document.createTextNode("7");
+        btn7.appendChild(btn7Text);
+        document.getElementById("calculator").appendChild(btn7);
+
+        const btn8=document.createElement("button");
+        const btn8Text=document.createTextNode("8");
+        btn8.appendChild(btn8Text);
+        document.getElementById("calculator").appendChild(btn8);
+        
+        
+        const btn9=document.createElement("button");
+        const btn9Text=document.createTextNode("9");
+        btn9.appendChild(btn9Text);
+        document.getElementById("calculator").appendChild(btn9);
+
+        const btnmult=document.createElement("button");
+        const btnmultText=document.createTextNode("*");
+        btnmult.appendChild(btnmultText);
+        document.getElementById("calculator").appendChild(btnmult);
+
+        const br = document.createElement("br");
+        calculator.appendChild(br);
+
+        const btn4=document.createElement("button");
+        const btn4Text=document.createTextNode("4");
+        btn4.appendChild(btn4Text);
+        document.getElementById("calculator").appendChild(btn4);
+
+        
+        const btn5=document.createElement("button");
+        const btn5Text=document.createTextNode("5");
+        btn5.appendChild(btn5Text);
+        document.getElementById("calculator").appendChild(btn5);
+
+        
+        const btn6=document.createElement("button");
+        const btn6Text=document.createTextNode("6");
+        btn6.appendChild(btn6Text);
+        document.getElementById("calculator").appendChild(btn6);
+
+        const btnplus=document.createElement("button");
+        const btnplusText=document.createTextNode("+");
+        btnplus.appendChild(btnplusText);
+        document.getElementById("calculator").appendChild(btnplus);
+        
+        const br1 = document.createElement("br");
+        calculator.appendChild(br1);
+        
+         const btn1=document.createElement("button");
+        const btn1Text=document.createTextNode("1");
+        btn1.appendChild(btn1Text);
+        document.getElementById("calculator").appendChild(btn1);
+        
+        const btn2=document.createElement("button");
+        const btn2Text=document.createTextNode("2");
+        btn2.appendChild(btn2Text);
+        document.getElementById("calculator").appendChild(btn2);
+        
+        const btn3=document.createElement("button");
+        const btn3Text=document.createTextNode("3");
+        btn3.appendChild(btn3Text);
+        document.getElementById("calculator").appendChild(btn3);
+
+        const btnminus=document.createElement("button");
+        const btnminusText=document.createTextNode("-");
+        btnminus.appendChild(btnminusText);
+        document.getElementById("calculator").appendChild(btnminus);
+
+        
+        const br2 = document.createElement("br");
+        calculator.appendChild(br2);
+
+        const btnClr=document.createElement("button");
+        const btnClrText=document.createTextNode("C");
+        btnClr.appendChild(btnClrText);
+        document.getElementById("calculator").appendChild(btnClr);
+
+        
+        const btn0=document.createElement("button");
+        const btn0Text=document.createTextNode("0");
+        btn0.appendChild(btn0Text);
+        document.getElementById("calculator").appendChild(btn0);
+        
+        const btneql=document.createElement("button");
+        const btneqlText=document.createTextNode("=");
+        btneql.appendChild(btneqlText);
+        document.getElementById("calculator").appendChild(btneql);
+
+
+        
+        const btndiv=document.createElement("button");
+        const btndivText=document.createTextNode("/");
+        btndiv.appendChild(btndivText);
+        document.getElementById("calculator").appendChild(btndiv);
+        
+
+        btn7.addEventListener("click", function() { display.innerHTML += this.textContent });
+        btn8.addEventListener("click", function() { display.innerHTML += this.textContent });
+        btn9.addEventListener("click", function() { display.innerHTML += this.textContent });
+        btn4.addEventListener("click", function() { display.innerHTML += this.textContent });
+        btn5.addEventListener("click", function() { display.innerHTML += this.textContent });
+        btn6.addEventListener("click", function() { display.innerHTML += this.textContent });
+        btn1.addEventListener("click", function() { display.innerHTML += this.textContent });
+        btn2.addEventListener("click", function() { display.innerHTML += this.textContent });
+        btn3.addEventListener("click", function() { display.innerHTML += this.textContent });
+        btn0.addEventListener("click", function() { display.innerHTML += this.textContent });
+
+        btnplus.addEventListener("click", function() { display.innerHTML += this.textContent });
+        btnminus.addEventListener("click", function() { display.innerHTML += this.textContent });
+        btnmult.addEventListener("click", function() { display.innerHTML += this.textContent });
+        btndiv.addEventListener("click", function() { display.innerHTML += this.textContent });
+
+           
+        btnClr.addEventListener("click", function() {
+            display.innerHTML = "";
+            });
+
+        btneql.addEventListener("click",function(){
+            display.innerHTML=eval(display.innerHTML);
+        })
+
+
+        }
+    </script>    
+</body>
+</html>
