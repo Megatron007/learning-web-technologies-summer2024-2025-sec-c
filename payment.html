@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Checkout</title>
+</head>
+<body>
+    <form method="post" action="" onsubmit="return validateForm()">
+    <h1>Checkout</h1>
+    <div style="border: 1px solid; border-radius: 10px; padding: 10px; width: 400px;">
+        <h3>1. Payment Details</h3>
+        <label for="amount">Total Amount</label><br>
+        <input type="text" id="amount" name="amount" style="width: 200px;"><p id="amountError"></p>
+         
+        <label for="option">Choose Payment Option</label><br>
+        <select id="card" style="width: 200px;">
+            <option value="">Select</option>
+            <option value="card">Credit/Debit Card</option>
+            <option value="GPay">GPay</option>
+            <option value="ApplePay">Apple Pay</option>
+        </select><p id="optionError"></p>
+        
+        <label for="split">Do you want to split payment?</label>
+        <input type="checkbox" id="yes" name="yes">Yes
+
+        <div id="splitFields"></div>
+    </div><br>
+    <div id="savedpayment" style="border: 1px solid; border-radius: 10px; padding: 10px; width: 400px;" >
+            <h3>2. Saved Payment Option</h3>
+            <select id="savedcard">Saved Cards
+            <option value="">Select</option>
+            <option value="card1">Visa 4120****9120</option>
+            <option value="card2">Visa 4320****9520</option>
+        </select>
+    </div><br>
+
+    <input type="submit" value="Pay">
+    </form>
+    <script>
+    function validateForm() {
+            let amount = document.getElementById("amount").value.trim();
+            let option = document.getElementById("card").value;
+            let amountError = document.getElementById("amountError");
+            let optionError = document.getElementById("optionError");
+            let isValid = true;
+
+            
+            amountError.innerHTML = "";
+            amountError.style.color="red";
+            optionError.innerHTML = "";
+            optionError.style.color="red";
+
+            
+            if (!amount || isNaN(amount) || Number(amount) <= 0) {
+                amountError.innerHTML = "Please enter a valid positive amount!";
+                isValid = false;
+            }
+
+            if (!option) {
+                optionError.innerHTML = "Please select a payment option!";
+                isValid = false;
+            }
+
+            
+        if (!isValid) {
+        alert("Please fix the errors before paying!");
+        return false;
+    }
+
+        alert("Payment Succesful!");
+         return true;
+
+        }
+
+        document.getElementById("yes").addEventListener("change", function () {
+            const container = document.getElementById("splitFields");
+            container.innerHTML = ""; // 
+            if (this.checked) {
+                const input1 = document.createElement("input");
+                const input2 = document.createElement("input");
+                input1.type = input2.type = "text";
+                input1.placeholder = "Amount 1";
+                input2.placeholder = "Amount 2";
+                input1.style.marginRight = "10px";
+
+                container.appendChild(document.createElement("br"));
+                container.appendChild(input1);
+                container.appendChild(input2);
+            }
+        });
+
+    </script>
+</body>
+</html>
